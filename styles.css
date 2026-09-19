@@ -1,0 +1,281 @@
+/* ============================================================
+   KiToa — stylesheet
+   Design tokens + component classes (adapted from the "Organic"
+   design system), recolored to the site's navbar/Bootstrap-blue
+   palette. Fonts are loaded from Google Fonts in index.html's
+   <head> — this file only sets the --font-* variables that point
+   at them, it does not embed any font data.
+   ============================================================ */
+
+:root {
+  --color-bg: #f5ead8;
+  --color-surface: #ebddc5;
+  --color-text: #201e1d;
+  --color-accent: #c67139;
+  --color-accent-2: #7a8a5e;
+  --color-divider: color-mix(in srgb, #201e1d 16%, transparent);
+
+  /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
+     same step of any role matches the others in visual value. */
+  --color-neutral-100: #f9f4ed;
+  --color-neutral-200: #eee7db;
+  --color-neutral-300: #dcd3c4;
+  --color-neutral-400: #c0b6a5;
+  --color-neutral-500: #a19786;
+  --color-neutral-600: #82796a;
+  --color-neutral-700: #645c50;
+  --color-neutral-800: #474238;
+  --color-neutral-900: #2e2b25;
+
+  --color-accent-100: #fff2eb;
+  --color-accent-200: #ffe1d0;
+  --color-accent-300: #ffc6a5;
+  --color-accent-400: #f6a06b;
+  --color-accent-500: #d67f48;
+  --color-accent-600: #b2622d;
+  --color-accent-700: #8c491a;
+  --color-accent-800: #643312;
+  --color-accent-900: #402310;
+
+  --color-accent-2-100: #f0fae1;
+  --color-accent-2-200: #e1eecc;
+  --color-accent-2-300: #ccdbb2;
+  --color-accent-2-400: #aebf92;
+  --color-accent-2-500: #8fa073;
+  --color-accent-2-600: #728157;
+  --color-accent-2-700: #56633f;
+  --color-accent-2-800: #3d472b;
+  --color-accent-2-900: #272e1b;
+
+  --font-body: "Figtree", system-ui, sans-serif;
+
+  --space-1: 4.4px;
+  --space-2: 8.8px;
+  --space-3: 13.2px;
+  --space-4: 17.6px;
+  --space-6: 26.4px;
+  --space-8: 35.2px;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+
+  /* Elevation — derived from the ground: soft ink-tinted shadows on a
+     light theme. */
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2e2b25 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2e2b25 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2e2b25 22%, transparent);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+
+.washed { filter: saturate(0.6) contrast(0.85) brightness(1.1) opacity(0.94); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Components — built with the tokens above. Plain CSS on plain HTML.
+   ══════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-size: 15px; line-height: 1.55; font-weight: 400; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 var(--space-2);
+}
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+h3 { font-size: 25px; }
+h4 { font-size: 20px; }
+h5 { font-size: 16px; }
+h6 { font-size: 13px; }
+h6 { letter-spacing: 0.08em; text-transform: uppercase; }
+p { margin: 0 0 var(--space-3); }
+a { color: var(--color-accent); text-underline-offset: 3px; }
+img { display: block; max-width: 100%; }
+figure { margin: 0; }
+figcaption {
+  font-size: 11px; margin-top: var(--space-1);
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.text-muted { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+
+/* — rules — */
+.hr {
+  height: 1px; border: 0; margin: var(--space-4) 0;
+  background: var(--color-divider);
+}
+
+/* — buttons — */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  cursor: pointer; text-decoration: none;
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 14px; line-height: 1.2; color: var(--color-text);
+  background: transparent; border: 1px solid transparent;
+  padding: var(--space-2) calc(var(--space-3) * 1.2);
+  border-radius: var(--radius-md);
+}
+.btn svg { display: block; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary { background: var(--color-accent); color: var(--color-bg); }
+.btn-primary:hover { background: var(--color-accent-600); }
+.btn-primary:active { background: var(--color-accent-700); }
+.btn-secondary { border-color: var(--color-divider); }
+.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.btn-secondary:active { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
+.btn-ghost { color: var(--color-accent); padding-inline: var(--space-1); }
+.btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.btn-ghost:active { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+.btn-icon { width: 36px; height: 36px; padding: 0; }
+.btn-block { width: 100%; margin-top: var(--space-2); }
+
+/* — forms — */
+.field > label {
+  display: block; font-size: 12px; margin-bottom: 5px;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+.input {
+  width: 100%; min-height: 36px; padding: 6px 10px; font: inherit;
+  font-size: 14px; color: var(--color-text); caret-color: var(--color-accent);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.input:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+.input:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
+textarea.input { min-height: 90px; resize: vertical; }
+
+/* — cards — */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-3); border-radius: var(--radius-md); background: var(--color-surface);
+}
+.card-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 17px; line-height: 1.2;
+}
+.card-body { margin: 0; font-size: 13px; opacity: 0.8; flex: 1; }
+.elev-sm { box-shadow: var(--shadow-sm); }
+.elev-md { box-shadow: var(--shadow-md); }
+.elev-lg { box-shadow: var(--shadow-lg); }
+
+/* — tags — */
+.tag {
+  display: inline-flex; align-items: center; font-size: 11px;
+  letter-spacing: 0.02em; padding: 3px 10px;
+  border-radius: calc(var(--radius-md) * 0.75);
+}
+.tag-accent { background: var(--color-accent-100); color: var(--color-accent-800); }
+.tag-accent-2 { background: var(--color-accent-2-100); color: var(--color-accent-2-800); }
+.tag-neutral { background: var(--color-neutral-100); color: var(--color-neutral-800); }
+.tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent); }
+
+/* — navigation — */
+.nav {
+  display: flex; align-items: center; gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+}
+.nav a { color: inherit; text-decoration: none; font-size: 14px; }
+.nav a:hover, .nav a[aria-current='page'] { color: var(--color-accent); }
+
+/* — placeholder screenshot slot (stands in for a real product shot) — */
+.shot-placeholder {
+  width: 100%; aspect-ratio: 4 / 3;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 24px;
+  background: var(--color-surface);
+  border: 1px dashed var(--color-divider);
+  border-radius: calc(2 * var(--radius-lg));
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+  font-size: 13px;
+}
+
+/* — rounded frame: everything softens, small controls go pill — */
+.card { border-radius: calc(var(--radius-lg) * 1.15); }
+.btn, .tag, .input { border-radius: 999px; }
+.input { padding-inline: 14px; }
+
+/* — type tokens: Baloo 2 keeps the display voice chunky and rounded
+   while covering Vietnamese diacritics (Caprasimo's Latin-only glyph
+   set falls back to a mismatched serif on Vietnamese text) — */
+:root { --font-heading: 'Baloo 2', system-ui, sans-serif; --font-heading-weight: 700; }
+
+/* Recolored to a navbar/Bootstrap-blue palette — shapes and type stay
+   the rounded system above, only the tokens shift. */
+:root {
+  --color-bg: #ffffff; --color-surface: #f8f9fa; --color-text: #212529;
+  --color-divider: color-mix(in srgb, #212529 16%, transparent);
+  --color-accent: #0d6efd;
+  --color-accent-100: #cfe2ff; --color-accent-200: #9ec5fe; --color-accent-300: #6ea8fe;
+  --color-accent-400: #3d8bfd; --color-accent-500: #0d6efd; --color-accent-600: #0a58ca;
+  --color-accent-700: #084298; --color-accent-800: #052c65; --color-accent-900: #031633;
+  --color-accent-2: #495057;
+  --color-accent-2-100: #f8f9fa; --color-accent-2-200: #e9ecef; --color-accent-2-300: #dee2e6;
+  --color-accent-2-400: #ced4da; --color-accent-2-500: #adb5bd; --color-accent-2-600: #6c757d;
+  --color-accent-2-700: #495057; --color-accent-2-800: #343a40; --color-accent-2-900: #212529;
+}
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; overflow-x: clip; }
+a { color: var(--color-accent-700); }
+a:hover { color: var(--color-accent-800); }
+
+/* ---------------- page-specific layout ---------------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--color-accent-2-900);
+  box-shadow: var(--shadow-sm);
+}
+.site-nav {
+  max-width: 1200px; margin: 0 auto; flex-wrap: wrap;
+  padding: 12px clamp(20px, 5vw, 48px);
+  color: #fff;
+}
+.brand {
+  display: flex; align-items: center; gap: 10px; margin-right: auto;
+}
+.brand-mark {
+  display: inline-flex; align-items: flex-end;
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  line-height: 1; letter-spacing: -0.01em;
+}
+.brand-mark .k-light { color: #f8f9fa; }
+.brand-mark .k-dark { color: var(--color-text); }
+.brand-mark .toa { color: #0d6efd; }
+.brand-mark .i-stem {
+  position: relative; display: inline-block;
+  background: currentColor; border-radius: 1px;
+}
+.brand-mark .i-stem .i-dot {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  border-radius: 50%; background: #f5a623;
+}
+.brand-mark--header {
+  font-size: 23px;
+}
+.brand-mark--header .i-stem { width: 5px; height: 0.6em; margin: 0 4px 0 2px; }
+.brand-mark--header .i-stem .i-dot { top: -0.55em; width: 9px; height: 9px; }
+.brand-mark--footer {
+  font-size: 16px;
+}
+.brand-mark--footer .i-stem { width: 4px; height: 0.6em; margin: 0 3px 0 2px; }
+.brand-mark--footer .i-stem .i-dot { top: -0.55em; width: 7px; height: 7px; }
+
+.page-shell { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
+
+.section-eyebrow {
+  display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--color-accent-700);
+}
+
+.site-footer { border-top: 1px solid var(--color-divider); }
+.site-footer-row {
+  max-width: 1200px; margin: 0 auto; padding: 24px clamp(20px, 5vw, 48px);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
